@@ -25,3 +25,11 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+💡 Il s'agit d'une application de gestion des organisations composée par:
+
+✅ Une partie frontend avec Angular 14
+✅ Une partie backend avec Spring Boot
+✅ Un cache en mémoire avec Redis
+✅ PostgreSQL comme un système de gestion de base de données relationnelle et objet.
+Pratie BackEnd 🔍: https://github.com/chaymabghozzi/Gestion-Organisation-BACKEND
