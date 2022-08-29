@@ -3,10 +3,10 @@
 ## Description
 💡 It is an organization management application composed by:
 
-✅ A frontend part with Angular 14
-✅ A backend part with Spring Boot
-✅ An in-memory cache with Redis
-✅ PostgreSQL as a relational and object database management system.
+- ✅ A frontend part with Angular 14
+- ✅ A backend part with Spring Boot
+- ✅ An in-memory cache with Redis
+- ✅ PostgreSQL as a relational and object database management system.
 BackEnd part 🔍: https://github.com/chaymabghozzi/Gestion-Organisation-BACKEND
 
 ##
