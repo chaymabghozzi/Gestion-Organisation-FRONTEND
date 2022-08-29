@@ -1,0 +1,125 @@
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">
+<br>
+
+<br>
+<div class="container">
+   
+    <div *ngIf="evenement">
+            <form  [formGroup]="evenementForm" (ngSubmit)="saveEvenement()">
+              <h2>Ajouter Evenement</h2>
+              <hr class="hr">
+           
+                <div class="form-group">
+                    <label for="libelle"><th>Libelle</label>
+                      <input type="text" class="form-control" id="name" [(ngModel)]="evenement.name" formControlName="name">
+                    </div>
+             
+
+                    <div class="form-group">
+                      <label for="libelle"><th>Date Debut</label>
+                    
+                      <input type="date" class="form-control" id="dateDebut" [(ngModel)]="evenement.dateDebut" formControlName="dateDebut">
+                    
+                  </div>
+
+                  <div class="form-group">
+                    <label for="libelle"><th>Date Fin</label>
+                   
+                      <input type="date" class="form-control" id="dateFin" [(ngModel)]="evenement.dateFin" formControlName="dateFin">
+                  
+                  </div>
+
+                  <div class="form-group">
+                    <label for="libelle"><th>Lieu</label>
+                
+                      <input type="text" class="form-control" id="lieu" [(ngModel)]="evenement.lieu" formControlName="lieu" placeholder="Lieu">
+                   
+                  </div>
+
+                  <div class="form-group ">
+                    <label for="type"><th>Etat:</label>
+                
+                      <select class=" custom-select "   id="uploadDir"  #uploadDir formControlName="uploadDir">
+                        <option [selected]=true>Choisir un etat</option>
+                        <option value="En cours">En cours</option>
+                        <option value=" Terminé" > Terminé</option>
+                   </select>
+                   </div>
+
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <label class="input-group-text" for="user"><th>Utilisateurs</label>
+                    </div>
+                    <select  class="custom-select" multiple id="user" formControlName="user" [(ngModel)]="evenement.user">
+                        <option [ngValue]="user"
+                        *ngFor="let user of users"
+                        [selected]="user.id == evenement.user" >{{user.prenom}} {{user.nom}}</option>
+                    </select>
+                  </div>
+                  
+                  <div class=pull-right>
+                    <div class="btn-toolbar">
+                      <button class="button" type="submit" class="btn btn-success">Ajouter </button>
+                      <button type="button" class="btn btn-danger" (click)="goBack()"> Retourner</button>
+                    </div>
+                    </div>
+            
+              </form>
+    </div>
+
+    <div *ngIf="evenement ==undefined">
+      <form  [formGroup]="evenementForm" 
+      (ngSubmit)= "addEvenement(name.value, dateDebut.value,dateFin.value, lieu.value, uploadDir.value)">
+
+      <h2>Ajouter Evenement</h2>
+      <hr class="hr">
+      <div class="form-group">
+        <label for="libelle"><th>Evenement</label>
+            <input type="text" class="form-control" id="name" #name formControlName="name">
+        </div>
+
+        <div class="form-group">
+          <label for="libelle"><th>Date Debut</label>
+            <input type="date" class="form-control" id="dateDebut" #dateDebut formControlName="dateDebut">
+        </div>
+
+        <div class="form-group">
+          <label for="libelle"><th>Date Fin </label>
+        
+            <input type="date" class="form-control" id="dateFin" #dateFin formControlName="dateFin">
+          
+      </div>
+
+      
+      <div class="form-group">
+        <label for="libelle"><th>Lieu</label>
+    
+          <input type="text" class="form-control" id="lieu" #lieu formControlName="lieu">
+       
+      </div>
+
+      <div class="form-group ">
+        <label for="uploadDir"><th>Etat:</label>
+    
+          <select class=" custom-select "   id="uploadDir"  #uploadDir formControlName="uploadDir">
+            <option [selected]=true>Choisir un etat</option>
+            <option value="En cours">En cours</option>
+            <option value=" Terminé" > Terminé</option>
+       </select>
+       </div>
+
+        <div class="btn-toolbar">
+
+         
+        </div>
+        <div class=pull-right>
+          <div class="btn-toolbar">
+            <button class="button" type="submit" class="btn btn-success">Ajouter </button>
+            <button type="button" class="btn btn-danger" (click)="goBack()"> Retourner</button>
+          </div>
+          </div>
+      </form> 
+  </div>
+
+  
+    

@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="row">
+    <div class="col">
+      <div class="chat_container">
+        <div class="job-box">
+     
+          <div class="inbox-message"  *ngFor="let evenement of evenements">
+            <ul>
+              <li>
+               
+                  <div class="message-avatar">
+                    <img src="https://idignity.org/wp-content/uploads/2018/09/icon-upcoming-events.png" alt="">
+                  </div>
+                  <div class="message-body">
+                    <div class="message-body-heading">
+                      <h5> <span class="unread">{{evenement.uploadDir}}</span></h5>
+                      <span>{{evenement.dateDebut}}&nbsp;&nbsp;&nbsp;&nbsp;{{evenement.dateFin}}</span>
+                    </div>
+                    <p>{{evenement.name}}</p>
+                  </div>
+             
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    </div>

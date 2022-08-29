@@ -1,0 +1,110 @@
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">
+<br>
+
+<br>
+
+   
+    <div class="form-group "*ngIf="sondage">
+            <form  [formGroup]="sondageForm" (ngSubmit)="saveSondage()">
+              <div class="container">
+              <h2>Ajouter Sondage</h2>
+              <hr class="hr">
+            </div>
+
+            <div class="form-group">
+              <label for="libelle">Libelle</label>
+                  
+                      <input type="text" class="form-control" id="name" [(ngModel)]="sondage.name" formControlName="name">
+                   
+                  </div>
+
+                  <div class="form-group">
+                    <label for="libelle">Date Sondage</label>
+                   
+                      <input type="date" class="form-control" id="dateSondage" [(ngModel)]="sondage.dateSondage" formControlName="dateSondage">
+                    
+                  </div>
+
+                  <div class="form-group ">
+                    <label for="type"><th>Etat:</label>
+                
+                      <select class=" custom-select "   id="isCompleted"  #isCompleted formControlName="isCompleted">
+                        <option [selected]=true>Choisir un etat</option>
+                        <option value="En cours">En cours</option>
+                        <option value=" Terminé" > Terminé</option>
+                   </select>
+                   </div>
+
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <label class="input-group-text" for="user">Utilisateurs</label>
+                    </div>
+                    <select  class="custom-select" multiple id="user" formControlName="user" [(ngModel)]="sondage.user">
+                        <option [ngValue]="user"
+                        *ngFor="let user of users"
+                        [selected]="user.id == sondage.user" >{{user.prenom}} {{user.nom}}</option>
+                    </select>
+                  </div>
+                  
+                  <div class=pull-right>
+                    <div class="btn-toolbar">
+                      <button class="button" type="submit" class="btn btn-success">Ajouter </button>
+                      <button type="button" class="btn btn-danger" (click)="goBack()"> Retourner</button>
+                    </div>
+                    </div>
+            
+              </form>
+    </div>
+
+    <div *ngIf="sondage ==undefined">
+        <form  [formGroup]="sondageForm" 
+        (ngSubmit)= "addSondage(name.value, dateSondage.value,isCompleted.value)">
+        <div class="container">
+          <h2> Ajouter Sondage</h2>
+          <hr class="hr">
+</div>
+
+<div class="form-group">
+
+  <label for="libelle"><th>Sondage</label>
+            <div class="col-sm-10">
+              <div class="form-group row">
+              <input type="text" class="form-control" id="name" #name formControlName="name">
+            </div>
+          </div>
+          </div>
+
+          <label for="libelle"><th>Date Sondage</label>
+            <div class="col-sm-10">
+          <div class="form-group row">
+              <input type="date" class="form-control" id="dateSondage" #dateSondage formControlName="dateSondage">
+            </div>
+          </div>
+
+          <div class="form-group ">
+            <label for="type"><th>Etat:</label>
+        
+              <select class=" custom-select "   id="isCompleted"  #isCompleted formControlName="isCompleted">
+                <option [selected]=true>Choisir un etat</option>
+                <option value="En cours">En cours</option>
+                <option value=" Terminé" > Terminé</option>
+           </select>
+           </div>
+
+          <div class="btn-toolbar">
+
+          </div>
+          <div class=pull-right>
+            <div class="btn-toolbar">
+              <button class="button" type="submit" class="btn btn-success">Ajouter </button>
+              <button type="button" class="btn btn-danger" (click)="goBack()"> Retourner</button>
+           
+            </div>
+            </div>
+        </form> 
+    </div>
+
+    
+
+
+       

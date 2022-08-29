@@ -1,0 +1,107 @@
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">
+<br>
+
+<br>
+    <div class="form-group " *ngIf="espace">
+            <form  [formGroup]="espaceForm" (ngSubmit)="saveEspace()">
+              <div class="container">
+                <h2>Mise à jours Espace</h2>
+                <hr class="hr">
+                </div>
+
+                <div class="form-group">
+                  <label for="libelle"><th>Libelle:</label>
+                    <input type="text" formControlName="Libelle" class="form-control" id="libelle" [(ngModel)]="espace.libelle"  id="libelle" name="libelle" placeholder="Libelle">
+                  </div>
+
+                <div class="form-group">
+                    <label for="presentation"><th>Presentation:</label>
+                    <textarea class="form-control"  name="message" rows="4"  placeholder="Présentation....." class="form-control" id="presentation" [(ngModel)]="espace.presentation" formControlName="presentation" ></textarea>
+                  </div>
+                  
+                  
+
+                  <div class="form-group ">
+                    <label for="type"><th>Type:</label>
+                
+                      <select class=" custom-select "   id="objectifs" [(ngModel)]="espace.objectifs" formControlName="objectifs">
+                        <option [selected]=true>Choisir un type</option>
+                        <option value="Association agréée">Association agréée</option>
+                        <option value="Associtation déclarée">Associtation déclarée</option>
+                   </select>
+                   </div>
+     
+        
+                    <div class="form-group">
+                      <label  for="user"><th>Administrateurs</label>
+                    
+                    <select  class="custom-select" id="user" formControlName="user" [(ngModel)]="espace.user" formControlName="user">
+                      <option [selected]=true>Choisir un administrateur d'espace</option>
+                        <option [ngValue]="user" 
+                        *ngFor="let user of users" 
+                        [selected]="user.id == espace.user!.id" >{{user.prenom}}{{user.nom}}</option>
+                    </select>
+                  </div>
+                
+
+                  <div class=pull-right>
+                  <div class="btn-toolbar">
+                    <button class="button" type="submit" class="btn btn-success">Ajouter </button>
+                    <button type="button" class="btn btn-danger" (click)="goBack()"> Retourner</button>
+                  </div>
+                  </div>
+</form>   
+    </div>
+
+
+        <div *ngIf="espace ==undefined">
+            <form  [formGroup]="espaceForm" 
+            (ngSubmit)= "addEspace(libelle.value, presentation.value,objectifs.value, logo.value)">
+            <div class="container">
+              <h2> Ajouter Espace</h2>
+              <hr class="hr">
+</div>
+              <div class="form-group">
+                <label for="libelle"><th>Libelle:</label>
+                  <input type="text" class="form-control" id="libelle" #libelle formControlName="libelle">
+              </div>
+
+              <div class="form-group">
+                <label for="presentation"><th>Presentation</label>
+                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" id="presentation" #presentation formControlName="presentation"></textarea>
+              </div>
+
+              <div class="form-group ">
+                <label for="type"><th>Type:</label>
+                  <select class=" custom-select "   id="objectifs" #objectifs formControlName="objectifs">
+                    <option [selected]=true>Choisir un type</option>
+                    <option value="Association agréée">Association agréée</option>
+                    <option value="Associtation déclarée">Associtation déclarée</option>
+               </select>
+               </div>
+
+       
+          
+        
+              <div class="form-group">
+                <label for="logo"><th>Logo</label>
+                <div class="col-sm-10">
+                  <input type='file' (change)="readUrl($event)" required id="logo" #logo formControlName="logo">
+                  <img [src]="url" height="100px" width="100px" *ngIf="url" > <br>
+                </div>
+              </div> 
+        
+            
+
+              <div class=pull-right>
+                <div class="btn-toolbar">
+                  <button class="button" type="submit" class="btn btn-success">Ajouter </button>
+                  <button type="button" class="btn btn-danger" (click)="goBack()"> Retourner</button>
+               
+                </div>
+                </div>
+            </form> 
+        </div>
+
+
+

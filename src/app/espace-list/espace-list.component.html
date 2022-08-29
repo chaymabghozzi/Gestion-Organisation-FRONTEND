@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<meta name="viewport" content="width=device-width, initial-scale=2">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+
+
+  <table class="w3-table-all w3-card-6">
+    <tr>
+    <th></th>
+      <th>Espaces</th>
+      <th>Administrateurs</th>
+      
+    </tr>
+    <tr  *ngFor="let espace of espaces">
+        <td><img src="https://doceo.be/wp-content/uploads/2020/01/picto-notre-hisoire-socie%CC%81te%CC%81.png" class="w3-bar-item w3-circle w3-hide-small" style="width:50px"></td>
+      <td>{{espace.libelle}}</td>
+      <td>{{espace.user?.prenom}}&nbsp;{{espace.user?.nom}}</td>
+   
+    </tr>
+   
+  </table>
+
+
+
+</html>

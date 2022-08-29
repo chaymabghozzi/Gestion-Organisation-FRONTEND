@@ -1,0 +1,15 @@
+<h2>Statistiques: </h2>
+<canvas id="myChart" style="max-width: 100px;"></canvas>
+<div>
+    <div>
+      <div>
+        <div style="display: block">
+          <canvas baseChart [data]="barChartData" [options]="barChartOptions"
+            [type]="barChartType" (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)"></canvas>
+        </div>
+       
+        <button type="button" class="btn btn-secondary" (click)="randomize()">Update</button>
+      </div>
+    </div>
+  </div>

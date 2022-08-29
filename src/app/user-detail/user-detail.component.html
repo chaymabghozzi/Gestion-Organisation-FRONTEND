@@ -1,0 +1,165 @@
+<br>
+<div class="container">
+    <div *ngIf="user">
+      <div class="row">
+        <div class="col col-md-9">
+          <form  [formGroup]="userForm" (ngSubmit)="saveUser()">
+            <div class="container">
+              <h2>Mise à jours Utilisateur</h2>
+              <hr class="hr">
+              </div>
+              <div class="form-group">
+                <label for="libelle"><th>Nom:</label>
+          
+                <input type="text" class="form-control" id="Nom" [(ngModel)]="user.nom" formControlName="nom">
+              </div>
+        
+
+              <div class="form-group">
+                <label for="libelle"><th>Prenom:</label>
+            
+                <input type="text" class="form-control" id="Prenom" [(ngModel)]="user.prenom" formControlName="prenom">
+              </div>
+          
+
+              <div class="form-group">
+                <label for="libelle"><th>Numéro Téléphone: </label>
+              
+                <input type="tel" class="form-control" id="numTel" [(ngModel)]="user.numTel" formControlName="numTel">
+              </div>
+         
+
+              <div class="form-group">
+                <label for="libelle"><th>E-mail: </label>
+          
+                <input type="email" class="form-control" id="email" [(ngModel)]="user.email" formControlName="email">
+              </div>
+     
+
+              <div class="form-group">
+                <label for="libelle"><th>Username:</label>
+            
+                <input type="text" class="form-control" id="id" [(ngModel)]="user.username" formControlName="username">
+            
+            </div>
+
+            <div class="form-group">
+              <label for="libelle"><th>Password:</label>
+           
+                  <input type="password" class="form-control" id="password" [(ngModel)]="user.password" formControlName="password">
+                </div>
+          
+              
+              <div class=pull-right>
+                <div class="btn-toolbar">
+                  <button class="button" type="submit" class="btn btn-success">Ajouter </button>
+                  <button type="button" class="btn btn-danger" (click)="goBack()"> Retourner</button>
+                </div>
+                </div>
+
+             
+        
+          </form>
+        </div>
+        <div class="col col-md-3">
+          <div class="card" style="width: 18rem;">
+            <div class="card-header">
+              roles
+            </div>
+           
+            <ul class="list-group list-group-flush" *ngFor="let role of user.roles">
+              <li class="list-group-item">{{role.roleName}}</li>
+            </ul>
+            <li class="list-group-item" ><button class="btn btn-info" (click)="show()">Add Role</button></li>
+            <div id="sessionsToAdd" class="input-group mb-3" hidden>
+      
+              <div class="input-group-prepend">
+                <label class="input-group-text" id="chosenRole" for="chosenRole">Roles</label>
+              </div>
+              <select  class="custom-select" 
+              #mySelect
+              (change)='onOptionsSelected(mySelect.value)'>
+                <option [value]="role.id" 
+                [selected]="role.id"
+                *ngFor="let role of roles">
+                {{role.roleName}}</option>
+  
+              </select>
+              </div>
+            <button id="saveAdded" class="button btn" (click)="saveRole()" hidden>Save </button>
+      
+          </div>
+    
+        </div>
+      </div>
+            
+    
+    </div> 
+        <div *ngIf="user ==undefined">
+            <form  [formGroup]="userForm" (ngSubmit)="
+            addUser(username.value,email.value,password.value,nom.value,prenom.value,numTel.value)">
+            <div class="container">
+              <h2>Ajouter Utilisateur</h2>
+              <hr class="hr">
+              </div>
+              <div class="form-group">
+                <label for="libelle"><th>Username:</label>
+                
+                    <input type="text" class="form-control" #username id="username" formControlName="username">
+                
+            </div>
+
+            <div class="form-group">
+              <label for="libelle"><th>E-mail:</label>
+           
+                  <input type="email" class="form-control" #email id="email" formControlName="email">
+              
+              </div>
+
+              <div class="form-group">
+                <label for="libelle"><th>Password:</label>
+              
+                    <input type="password" class="form-control" #password id="password" formControlName="password">
+                </div>
+        
+
+                <div class="form-group">
+                  <label for="libelle"><th>Nom:</label>
+           
+                <input type="text" class="form-control" #nom id="nom" formControlName="nom">
+        
+        </div>
+
+
+
+        <div class="form-group">
+          <label for="libelle"><th>Prenom:</label>
+                
+                  <input type="prenom" class="form-control" id="prenom" #prenom formControlName="prenom">
+                
+              </div>
+
+              <div class="form-group">
+                <label for="libelle"><th>Numéro Téléphone:</label>
+              
+                  <input type="tel" class="form-control" id="numTel" #numTel formControlName="numTel">
+                </div>
+               
+              <div class="btn-toolbar">
+                
+
+             
+              </div>
+              <div class=pull-right>
+                <div class="btn-toolbar">
+                  <button class="button" type="submit" class="btn btn-success">Ajouter </button>
+                  <button type="button" class="btn btn-danger" (click)="goBack()"> Retourner</button>
+                </div>
+                </div>
+        
+            </form>
+        </div>
+
+    </div>
+
+    

@@ -1,0 +1,49 @@
+<br>
+<br>
+<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+
+<div class="container bootstrap snippets bootdey">
+    <div class="col-md-12">
+        <div class="profile-container">
+            <div class="profile-header row">
+                <div class="col-md-4 col-sm-12 text-center">
+                    <img src= "../../../../assets/team.webp" alt="" class="header-avatar">
+                </div>
+                <div class="col-md-8 col-sm-12 profile-info">
+                    <h2> <div class="header-fullname"  > {{response.libelle}}</div></h2>
+                  
+                    <div class="header-information">
+                        {{response.presentation}}
+                    </div>
+                 
+                </div>
+           
+                <div class="col-md-12 col-sm-12 col-xs-12 profile-stats">
+                 
+<hr>
+                    <div class="row">
+                        <div class="col-md-4 col-sm-4 col-xs-12 stats-col">
+                            
+                            <div class="stats-value pink"><b>Administrateur:</b> {{response?.user?.prenom}} {{response?.user?.nom}}</div>
+                            
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-12 stats-col">
+                            <div class="stats-value pink"> <b>Nombre de participants:</b> 8</div>
+                        </div>
+
+                        <div class="col-md-4 col-sm-4 col-xs-12 stats-col">
+                            
+                            <div class="stats-value pink"><b>Type :</b> {{response.objectifs}}  </div>
+                            
+                        </div>
+                        
+                    </div>
+                    <div class=pull-right>
+                    <button type="button" class="btn btn-danger" (click)="goBack()"> Retourner</button>
+                    </div>
+                </div>
+            </div>   
+        </div>
+    </div>
+</div>

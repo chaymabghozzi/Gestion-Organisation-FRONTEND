@@ -1,0 +1,54 @@
+.mat-elevation-z8 {
+  padding: 20px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  border-radius: 20px;
+}
+
+.demo-table {
+  width: 100%;
+  padding: 15px;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 0px;
+}
+
+.mat-column-id {
+  padding-right: 1px;
+  text-align: center;
+}
+
+.mat-column-nom {
+  padding-left: 50px;
+  font-size: 50px;
+}
+
+.mat-column-groupe {
+  padding-left: 30px;
+  font-style: normal;
+}
+
+.mat-column-delete {
+  width: 32px;
+  text-align: center;
+  padding-left: 16px;
+  font-weight: bold;
+}
+.mat-column-update {
+  width: 32px;
+  text-align: center;
+  padding-left: 16px;
+  font-weight: bold;
+}
+.mat-paginator{
+  border-bottom-left-radius: 100px;
+  border-bottom-right-radius: 100px;
+}
+a:link
+{
+ text-decoration:none;
+}
+
+.mat-column-progress {
+  max-width: 40px;
+}
+

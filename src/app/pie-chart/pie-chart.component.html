@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+  <div class="col">
+    <div class="chat_container">
+      <div class="job-box">
+   
+        <div class="inbox-message" *ngFor="let tache of taches">
+          <ul>
+            <li>
+              <a href="#">
+                <div class="message-avatar">
+                  <img src="https://www.freeiconspng.com/thumbs/tasks-icon/tasks-icon-33.png" alt="">
+                </div>
+                <div class="message-body">
+                  <div class="message-body-heading">
+                    <h5> <span class="unread">{{tache.isCompleted}}</span></h5>
+                    <span>{{tache.dateTache}}</span>
+                  </div>
+                  <p>{{tache.name}}</p>
+                </div>
+              </a>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>

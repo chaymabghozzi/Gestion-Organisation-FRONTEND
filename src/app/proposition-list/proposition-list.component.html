@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="row">
+    <div class="col">
+      <div class="chat_container">
+        <div class="job-box">
+     
+          <div class="inbox-message"  *ngFor="let proposition of propositions">
+            <ul>
+              <li>
+                <a href="#">
+                  <div class="message-avatar">
+                    <img src="data:image/png;base64,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" alt="">
+                  </div>
+                  <div class="message-body">
+                    <div class="message-body-heading">
+                      <h5> <span class="unread">{{proposition.name}}</span></h5>
+                      <span>{{proposition.user?.prenom}}{{proposition.user?.nom}}</span>
+                    </div>
+                    <p>{{proposition.description}}</p>
+                  </div>
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    </div>

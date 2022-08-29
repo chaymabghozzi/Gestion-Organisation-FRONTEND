@@ -1,0 +1,78 @@
+<br>
+<br>
+    <div class="mat-elevation-z8 ">
+      <h2>Liste des Utilisateurs</h2>
+      <mat-form-field>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Filter">
+      </mat-form-field>
+      <mat-table [dataSource]="dataSource" matSort class="demo-table">
+
+        <!-- id Column -->
+        <ng-container matColumnDef="id">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> <th><span>ID</span></th> </mat-header-cell>
+          <mat-cell *matCellDef="let user"> {{user.id}} </mat-cell>
+        </ng-container>
+    
+        <!-- username Column -->
+        <ng-container matColumnDef="username">
+          <mat-header-cell *matHeaderCellDef mat-sort-header><th><span> Nom d'utilisateur</span></th> </mat-header-cell>
+          <mat-cell *matCellDef="let user"> {{user.username}} </mat-cell>
+        </ng-container>
+
+      
+
+        <!-- nom Column -->
+        <ng-container matColumnDef="nom">
+          <mat-header-cell *matHeaderCellDef mat-sort-header><th><span> Nom</span></th>  </mat-header-cell>
+              <mat-cell *matCellDef="let user"> {{user.nom}} </mat-cell>
+      </ng-container>
+
+        <!-- prenom Column -->
+        <ng-container matColumnDef="prenom">
+            <mat-header-cell *matHeaderCellDef mat-sort-header><th><span> Prenom</span></th> </mat-header-cell>
+                <mat-cell *matCellDef="let user"> {{user.prenom}} </mat-cell>
+        </ng-container>
+
+
+         
+      
+
+        <!-- Update Column -->
+        <ng-container matColumnDef="update" >
+          <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
+          <mat-cell *matCellDef="let user">
+            <a routerLink="/user/detail/{{user.id}}" class="btn btn-labeled btn-info" ><span class="btn-label"><i class="fa fa-pencil" aria-hidden="true"></i></span>&nbsp; UPDATE</a>
+          </mat-cell>
+        </ng-container>
+    
+          <!-- Update Column -->
+          <ng-container matColumnDef="affiche" >
+            <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
+            <mat-cell *matCellDef="let user">
+              <a routerLink="/user/show/{{user.id}}"  class="btn btn-secondary"> <span class="btn-label"><i class="fa fa-eye" aria-hidden="true"></i></span>&nbsp; SHOW</a>
+            </mat-cell>
+          </ng-container>
+        <!-- Delete Column -->
+        <ng-container matColumnDef="delete">
+          <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
+          <mat-cell *matCellDef="let user">
+            <button type="button" class="btn btn-danger" (click)="deleteUser(user.id!)"><i class="fa fa-trash"></i>&nbsp; DELETE</button>
+          </mat-cell>
+        </ng-container>
+    
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row (click)="logData(row)" *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    </div>
+
+    <div *ngIf="!adminPermission">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1 class="display-4">Authorization Required</h1>
+        <p class="lead">This resource need admin authorizations !</p>
+      </div>
+    </div>
+    </div> 
+    
+    

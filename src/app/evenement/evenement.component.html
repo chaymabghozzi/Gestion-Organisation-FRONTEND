@@ -1,0 +1,108 @@
+<br>
+<br>
+<div class="mat-elevation-z8">
+    <h2>Liste des Evenements</h2>
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Filter">
+    </mat-form-field>
+    <mat-table [dataSource]="dataSource" matSort class="demo-table">
+           <!-- Id Column -->
+    <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef mat-sort-header><th><span> Id </span></mat-header-cell>
+        <mat-cell *matCellDef="let evenement"> {{evenement.id}} </mat-cell>
+      </ng-container>
+
+               <!-- name Column -->
+    <ng-container matColumnDef="name">
+        <p class="fw-normal mb-1">
+          <mat-header-cell *matHeaderCellDef mat-sort-header><th><span> Libelle</span> </mat-header-cell>
+        </p>
+          <mat-cell *matCellDef="let evenement"> {{evenement.name}} </mat-cell>
+        </ng-container>
+  
+            <!-- dateDebutEvenement Column -->
+      <ng-container matColumnDef="dateDebut">
+          <mat-header-cell *matHeaderCellDef mat-sort-header><th><span> Date Debut  </span> </mat-header-cell>
+          <p class="fw-normal mb-1">
+            <mat-cell *matCellDef="let evenement "> {{evenement.dateDebut}} </mat-cell>
+          </p>
+          </ng-container>
+
+                      <!-- dateFinEvenement Column -->
+      <ng-container matColumnDef="dateFin">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> <th><span>Date Fin  </span> </mat-header-cell>
+        <p class="fw-normal mb-1">
+          <mat-cell *matCellDef="let evenement "> {{evenement.dateFin}} </mat-cell>
+        </p>
+        </ng-container>
+
+                <!-- Lieu Column -->
+      <ng-container matColumnDef="lieu">
+        <mat-header-cell *matHeaderCellDef mat-sort-header><th><span> Lieu </span> </mat-header-cell>
+        <p class="fw-normal mb-1">
+          <mat-cell *matCellDef="let evenement"> {{evenement.lieu}} </mat-cell>
+          </p>
+        </ng-container>
+  
+        <ng-container matColumnDef="uploadDir">
+          <mat-header-cell *matHeaderCellDef mat-sort-header><th><span> Etat </span> </mat-header-cell>
+          <p class="fw-normal mb-1">
+            <mat-cell *matCellDef="let evenement"> {{evenement.uploadDir}} </mat-cell>
+            </p>
+          </ng-container>
+                       <!-- uploadDir Column -->
+      <!-- <ng-container matColumnDef="uploadDir">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Document  </mat-header-cell>
+        <p class="fw-normal mb-1">
+         
+          <mat-cell *matCellDef="let evenement">  <a href=""><img src="{{evenement?.uploadDir}}" alt="" class="img-fluid rounded-circle w-60"></a></mat-cell>
+          </p>
+        </ng-container> -->
+
+        <!-- user Column -->
+      <ng-container matColumnDef="user">
+          <mat-header-cell *matHeaderCellDef><th><span> Utilisateurs</span> </mat-header-cell>
+          <mat-cell *matCellDef="let evenement">
+          <div class="user">
+            <ng-container  *ngFor="let user of evenement.user">
+              <div class="user">
+                <td>
+                  <p class="fw-normal mb-1"> {{user.prenom}} {{user.nom}} </p>
+                
+                </td>
+               
+              </div>
+            </ng-container>
+          </div>
+          </mat-cell>
+        </ng-container> 
+
+         <!-- Update Column -->
+      <ng-container matColumnDef="update" >
+        <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
+        <mat-cell *matCellDef="let evenement">
+          <a routerLink="/evenement/detail/{{evenement.id}}" class="btn btn-labeled btn-info" ><span class="btn-label"><i class="fa fa-pencil" aria-hidden="true"></i></span> UPDATE</a>
+        </mat-cell>
+      </ng-container>
+
+       <!-- Delete Column -->
+       <ng-container matColumnDef="delete" >
+        <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
+        <mat-cell *matCellDef="let evenement">
+          <button type="button" class="btn btn-danger" (click)="deleteEvenement(evenement.id!)"><i class="fa fa-trash"></i>&nbsp; DELETE</button>
+        </mat-cell>
+      </ng-container>
+
+
+
+              <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row (click)="logData(row)" *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
+    <div *ngIf="evenements?.length == 0" class="col-lg-12 col-md-12 col-xl-12">
+      <div class="alert alert-primary" role="alert">
+        <h4 class="alert-heading">Evenement n'existe pas!</h4>
+        <p>No Events were found.</p>
+      </div>
+  </div>

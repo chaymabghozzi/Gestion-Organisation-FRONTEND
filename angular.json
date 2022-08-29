@@ -90,7 +90,10 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "styles.css",
+              "css/spinner.css", 
+              "css/bootstrap.min.css",
+              "css/font-awesome.min.css"
             ],
             "scripts": []
           }

@@ -1,0 +1,54 @@
+<div class="mat-elevation-z8">
+    <h2>Liste des propositions</h2>
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Filter">
+    </mat-form-field>
+
+    
+    <mat-table [dataSource]="dataSource" matSort class="demo-table">
+      <!-- Id Column -->
+
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> <th>Id </mat-header-cell>
+        <mat-cell *matCellDef="let proposition"> {{proposition.id}} </mat-cell>
+      </ng-container>
+  
+      <!-- Libelle Column -->
+       <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> <th>Libelle </mat-header-cell>
+        <mat-cell *matCellDef="let proposition"> {{proposition.name}} </mat-cell>
+      </ng-container>
+  
+      <!-- description Column -->
+      <ng-container matColumnDef="description">
+      <mat-header-cell *matHeaderCellDef mat-sort-header><th> Description </mat-header-cell>
+      <mat-cell *matCellDef="let proposition"> {{proposition.description}} </mat-cell>
+    </ng-container>
+
+     <!-- user Column -->
+     <ng-container matColumnDef="user">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> <th>Utilisateur </mat-header-cell>
+        <mat-cell *matCellDef="let proposition">{{proposition?.user?.prenom}} {{proposition?.user?.nom}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="delete" >
+        <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
+        <mat-cell *matCellDef="let proposition">
+          <button type="button" class="btn btn-danger"(click)="deleteProposition(proposition.id!)"><i class="fa fa-trash"></i>&nbsp; DELETE</button>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row (click)="logData(row)" *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
+    <div *ngIf="propositions?.length == 0" class="col-lg-12 col-md-12 col-xl-12">
+      <div class="alert alert-primary" role="alert">
+        <h4 class="alert-heading">Proposition n'existe pas!</h4>
+        <p>No Propositions were found.</p>
+      </div>
+  </div>
+
+
+  

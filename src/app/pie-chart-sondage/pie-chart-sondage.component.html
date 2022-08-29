@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="row">
+    <div class="col">
+      <div class="chat_container">
+        <div class="job-box">
+     
+          <div class="inbox-message"  *ngFor="let sondage of sondages">
+            <ul>
+              <li>
+                
+                  <div class="message-avatar">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJfgNTONuyO4RrVcPqsJcXyRriNosOTGOc7x8ZIOXg9zHFWYoBJzUrDOP_q1cYEbT42IE&usqp=CAU" alt="">
+                  </div>
+                  <div class="message-body">
+                    <div class="message-body-heading">
+                      <h5> <span class="unread">{{sondage.isCompleted}}</span></h5>
+                      <span>{{sondage.dateSondage}}</span>
+                    </div>
+                    <p>{{sondage.name}}</p>
+                  </div>
+              
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    </div>

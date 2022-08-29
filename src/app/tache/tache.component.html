@@ -1,0 +1,84 @@
+<div class="mat-elevation-z8">
+    <h2>Liste des Taches</h2>
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Chercher">
+    </mat-form-field>
+    <mat-table [dataSource]="dataSource" matSort class="demo-table">
+           <!-- Id Column -->
+    <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> <th><span>ID </span></th></mat-header-cell>
+        <mat-cell *matCellDef="let tache"> {{tache.id}} </mat-cell>
+      </ng-container>
+
+          <!-- name Column -->
+    <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> <th><span>Tache </span></th></mat-header-cell>
+        <mat-cell *matCellDef="let tache"> {{tache.name}} </mat-cell>
+      </ng-container>
+
+          <!-- dateTache Column -->
+    <ng-container matColumnDef="dateTache">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> <th><span>Date </span></th> </mat-header-cell>
+          <mat-cell *matCellDef="let tache"> {{tache.dateTache}} </mat-cell>
+        </ng-container>
+
+                  <!-- isCompleted Column -->
+    <ng-container matColumnDef="isCompleted">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> <th><span>Etat</span></th>  </mat-header-cell>
+          <mat-cell *matCellDef="let tache" > {{tache.isCompleted}} </mat-cell>
+        </ng-container>
+
+      <!-- user Column -->
+    <ng-container matColumnDef="user">
+        <mat-header-cell *matHeaderCellDef> <th><span>Utilisateur </span></th> </mat-header-cell>
+        <mat-cell *matCellDef="let tache">
+        <div class="user">
+          <ng-container  *ngFor="let user of tache.user">
+            <div class="user">
+              <td>
+                <p class="fw-normal mb-1"> {{user.prenom}} {{user.nom}}</p>
+              
+              </td>
+             
+            </div>
+          </ng-container>
+        </div>
+        </mat-cell>
+      </ng-container> 
+
+   
+  
+      
+
+         <!-- Update Column -->
+      <ng-container matColumnDef="update" >
+        <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
+        <mat-cell *matCellDef="let tache">
+          <a routerLink="/tache/detail/{{tache.id}}" class="btn btn-labeled btn-info" ><span class="btn-label"><i class="fa fa-pencil" aria-hidden="true"></i></span>&nbsp; UPDATE</a>
+        </mat-cell>
+      </ng-container>
+  
+  <!-- Delete Column -->
+  <ng-container matColumnDef="delete" >
+    <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
+    <mat-cell *matCellDef="let tache">
+      <button type="button" class="btn btn-danger" (click)="deleteTache(tache.id!)"><i class="fa fa-trash"></i>&nbsp; DELETE</button>
+    </mat-cell>
+  </ng-container>
+
+
+
+        
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row (click)="logData(row)" *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
+    <div *ngIf="taches?.length == 0" class="col-lg-12 col-md-12 col-xl-12">
+      <div class="alert alert-primary" role="alert">
+        <h4 class="alert-heading">Tache n'existe pas!</h4>
+        <p>No Tasks were found.</p>
+      </div>
+  </div>
+
+  

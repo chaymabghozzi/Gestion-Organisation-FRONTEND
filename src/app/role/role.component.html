@@ -1,0 +1,40 @@
+<div class="mat-elevation-z8">
+    <h2><a routerLink="/role/detail">Ajouter une role</a></h2>
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Filter">
+    </mat-form-field>
+    <mat-table [dataSource]="dataSource" matSort class="demo-table">
+      <!-- Id Column -->
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Id </mat-header-cell>
+        <mat-cell *matCellDef="let role "> {{role.id}} </mat-cell>
+      </ng-container>
+
+      <!-- nom Column -->
+      <ng-container matColumnDef="roleName">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> roleName </mat-header-cell>
+        <mat-cell *matCellDef="let role"> {{role.roleName}} </mat-cell>
+      </ng-container>
+
+      <!-- Update Column -->
+      <ng-container matColumnDef="update" >
+        <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
+        <mat-cell *matCellDef="let role">
+          <a routerLink="/role/detail/{{role.id}}" class="btn btn-primary">update</a>
+        </mat-cell>
+      </ng-container>
+
+      <!-- Delete Column -->
+      <ng-container matColumnDef="delete" >
+        <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
+        <mat-cell *matCellDef="let role">
+          <button type="button" class="btn btn-danger" (click)="deleteRole(role.id!)">delete</button>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row (click)="logData(row)" *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>
+
